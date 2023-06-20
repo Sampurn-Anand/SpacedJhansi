@@ -3,16 +3,17 @@ const spinBtn = document.getElementById("spin-btn");
 const finalValue = document.getElementById("final-value");
 const idValue = document.getElementById("id-value");
 var today = new Date();
+var date = today.getDay() + "/" + today.getMonth() + "/" + today.getFullYear();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 //Object that stores values of minimum and maximum angle for a value
 const rotationValues = [
-  { minDegree: 0, maxDegree: 30, value: 2 },
-  { minDegree: 31, maxDegree: 90, value: 1 },
-  { minDegree: 91, maxDegree: 150, value: 6 },
-  { minDegree: 151, maxDegree: 210, value: 5 },
-  { minDegree: 211, maxDegree: 270, value: 4 },
-  { minDegree: 271, maxDegree: 330, value: 3 },
-  { minDegree: 331, maxDegree: 360, value: 2 },
+  { minDegree: 0, maxDegree: 30, value: "Mangoshake" },
+  { minDegree: 31, maxDegree: 90, value: "Mint Mojito" },
+  { minDegree: 91, maxDegree: 150, value: "Pizza" },
+  { minDegree: 151, maxDegree: 210, value: "Burger" },
+  { minDegree: 211, maxDegree: 270, value: "Momos" },
+  { minDegree: 271, maxDegree: 330, value: "French Fries" },
+  { minDegree: 331, maxDegree: 360, value: "Noodles" },
 ];
 //Size of each piece
 const data = [16, 16, 16, 16, 16, 16];
@@ -56,7 +57,7 @@ let myChart = new Chart(wheel, {
       datalabels: {
         color: "#ffffff",
         formatter: (_, context) => context.chart.data.labels[context.dataIndex],
-        font: { size: 24 },
+        font: { size: 14 },
       },
     },
   },
@@ -66,7 +67,7 @@ const valueGenerator = (angleValue) => {
   for (let i of rotationValues) {
     //if the angleValue is between min and max then display it
     if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-      finalValue.innerHTML = `<p>You have won: ${i.value} <br>Time now:${time}</p>`;
+      finalValue.innerHTML = `<p>You have won: ${i.value} <br>Time now: ${time}<br>Today's date: ${date}</p>`;
       spinBtn.disabled = false;
       break;
     }
@@ -78,32 +79,14 @@ let count = 0;
 //100 rotations for animation and last rotation for result
 let resultValue = 101;
 let i=0;
-function OnWheelSpun()
-        {
-            PlayerPrefs.SetString("LastDateSpun", 
-                DateTime.Now.Year + "-"
-                + DateTime.Now.Month.ToString().PadLeft(2, '0') + "-"
-                + DateTime.Now.Day.ToString().PadLeft(2, '0'));
-    
-            Debug.Log(string.Format("Player spun wheel, saving date: {0}",
-                PlayerPrefs.GetString("LastDateSpun")));
-        }
-    function ShowWheelToPlayer()
-    {
-        if (DateTime.Now >
-                DateTime.ParseExact(PlayerPrefs.GetString("LastDateSpun", "0000-00-00"), "yyyy-MM-dd", 
-                System.Globalization.CultureInfo.InvariantCulture)
-                .AddDays(1))
-            i=0;
-        else
-            i=1;
-    }
-
-
-
+function closeMe()
+{
+  
+  open(location, '_self').close();
+}
 //Start spinning
+if(i==0){
 spinBtn.addEventListener("click", () => {
-  if(i==0){
         spinBtn.disabled = true;
         //Empty final value
         finalValue.innerHTML = `<p>Good Luck!</p>`;
@@ -130,11 +113,10 @@ spinBtn.addEventListener("click", () => {
             resultValue = 101;
             }
         }, 10);
-        i++;
-    }
-    else{
-        finalValue.innerHTML = `<p>Enough for today!  ${deviceID}</p>`;
-        onclick=window.close();
-    }
-    
+        i++;   
 });
+}
+else{
+    // finalValue.innerHTML = `<p>Enough for today!  ${deviceID}</p>`;
+    closeMe(); 
+}
