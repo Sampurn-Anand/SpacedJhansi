@@ -4,12 +4,8 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
   }
-  body {
-    height: 100vh;
-    background: linear-gradient(135deg, #c3a3f1, #6414e9);
-  }
   .wrapper {
-    width: 90%;
+    width: 100%;
     max-width: 24.37em;
     max-height: 90vh;
     background-color: #ffffff;
@@ -23,7 +19,7 @@
   }
   .container {
     position: relative;
-    width: 90%;
+    width: 100%;
     height: 90%;
   }
   #wheel {
