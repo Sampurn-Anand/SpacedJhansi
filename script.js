@@ -7,16 +7,25 @@ var date = today.getDay() + "/" + today.getMonth() + "/" + today.getFullYear();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 //Object that stores values of minimum and maximum angle for a value
 const rotationValues = [
-  { minDegree: 0, maxDegree: 30, value: "Mangoshake" },
-  { minDegree: 31, maxDegree: 90, value: "Mint Mojito" },
-  { minDegree: 91, maxDegree: 150, value: "Pizza" },
+  { minDegree: 0, maxDegree: 30, value: "Noodles" },
+  { minDegree: 31, maxDegree: 90, value: "Mangoshake" },
+  { minDegree: 91, maxDegree: 150, value: "French Fries" },
   { minDegree: 151, maxDegree: 210, value: "Burger" },
   { minDegree: 211, maxDegree: 270, value: "Momos" },
-  { minDegree: 271, maxDegree: 330, value: "French Fries" },
+  { minDegree: 271, maxDegree: 330, value: "Mint Mojito" },
   { minDegree: 331, maxDegree: 360, value: "Noodles" },
+
+  // { minDegree: 0, maxDegree: 30, value: 2 },
+  // { minDegree: 31, maxDegree: 90, value: 1 },
+  // { minDegree: 91, maxDegree: 150, value: 6 },
+  // { minDegree: 151, maxDegree: 210, value: 5 },
+  // { minDegree: 211, maxDegree: 270, value: 4 },
+  // { minDegree: 271, maxDegree: 330, value: 3 },
+  // { minDegree: 331, maxDegree: 360, value: 2 },
+
 ];
 //Size of each piece
-const data = [16, 16, 16, 16, 16, 16];
+const data = [10, 10, 10, 10, 10, 10];
 //background color for each piece
 var pieColors = [
   "#8b35bc",
@@ -34,7 +43,8 @@ let myChart = new Chart(wheel, {
   type: "pie",
   data: {
     //Labels(values which are to be displayed on chart)
-    labels: [1, 2, 3, 4, 5, 6],
+    //labels: [1, 2, 3, 4, 5, 6],
+    labels: ["Mangoshake","Noodles","Mint Mojito", "Momos","Burger","French Fries"],
     //Settings for dataset/pie
     datasets: [
       {
